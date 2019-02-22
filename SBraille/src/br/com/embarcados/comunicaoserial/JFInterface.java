@@ -1,3 +1,5 @@
+//Versão 1.0 da Tela
+
 package br.com.embarcados.comunicaoserial;
 
 import java.awt.EventQueue;
@@ -10,11 +12,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTextField;
 
 public class JFInterface extends JFrame {
 	
 	Arduino conn = new Arduino(); //cria um objeto do tipo Arduino
 	private JPanel contentPane;
+	private JTextField textBox;
 	
 
 	/**
@@ -44,7 +48,7 @@ public class JFInterface extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton jBLenOn = new JButton("Ligar"); //criação do botão LIGA
+		JButton jBLenOn = new JButton("Ligar"); ////////////////////LIGAR
 		jBLenOn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -55,20 +59,20 @@ public class JFInterface extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		jBLenOn.setBounds(79, 70, 89, 23);
+		jBLenOn.setBounds(38, 129, 89, 23);
 		contentPane.add(jBLenOn);
 		
-		JButton jBLenOff = new JButton("Desligar");
+		JButton jBLenOff = new JButton("Desligar"); /////////////////DESLIGAR
 		jBLenOff.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				conn.comunicacaoArduino(jBLenOff); 
 			}
 		});
-		jBLenOff.setBounds(232, 70, 89, 23);
+		jBLenOff.setBounds(243, 129, 89, 23);
 		contentPane.add(jBLenOff);
 		
-		JButton jBClose = new JButton("Sair");
+		JButton jBClose = new JButton("Sair"); /////////////////////////SAIR
 		jBClose.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -76,7 +80,22 @@ public class JFInterface extends JFrame {
 				System.exit(0);
 			}
 		});
-		jBClose.setBounds(157, 154, 89, 23);
+		jBClose.setBounds(152, 199, 89, 23);
 		contentPane.add(jBClose);
+		
+		textBox = new JTextField();
+		textBox.setBounds(81, 25, 230, 20);
+		contentPane.add(textBox);
+		textBox.setColumns(10);
+		
+		JButton bEnvia = new JButton("Envia"); ///////////////////////////BOTAO ENVIA
+		bEnvia.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				conn.comunicacaoArduino(bEnvia);
+			}
+		});
+		bEnvia.setBounds(99, 71, 89, 23);
+		contentPane.add(bEnvia);
 	}
 }
