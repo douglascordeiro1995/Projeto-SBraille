@@ -18,10 +18,10 @@ import javax.swing.JTextField;
 
 
 public class JFInterface extends JFrame {
-	
 	Arduino conn = new Arduino(); //cria um objeto do tipo Arduino
 	private JPanel contentPane;
 	private JTextField txtBox;
+	AlfabetoBraille[] alfabeto = AlfabetoBraille.values();
 	
 
 	/**
@@ -86,7 +86,7 @@ public class JFInterface extends JFrame {
 		jBClose.setBounds(152, 199, 89, 23);
 		contentPane.add(jBClose);
 		
-		txtBox = new JTextField();
+		txtBox = new JTextField(); /////////////////////texto
 		txtBox.setBounds(81, 25, 230, 20);
 		contentPane.add(txtBox);
 		txtBox.setColumns(10);
@@ -94,19 +94,20 @@ public class JFInterface extends JFrame {
 		JButton bEnvia = new JButton("Envia"); ///////////////////////////BOTAO ENVIA
 		bEnvia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String letra = txtBox.getText();    //a variavel letra recebe o que está na txtBox
 				
-				
-				String letra = txtBox.getText();
-				if(letra.equals("a")) {
+				if(letra.equals("a")) {           //comparo a string
+					System.out.println(alfabeto[1].getValor()); //p
 					JOptionPane.showMessageDialog(null,"Texto: "+ txtBox.getText());
-					conn.comunicacaoArduino(bEnvia);
+					conn.comunicacaoArduino(bEnvia,alfabeto[1].getValor());
 				}
 				else {
-					JOptionPane.showMessageDialog(null,"DEU RUIM BAGARAI");
+					JOptionPane.showMessageDialog(null,"NAO PEGOU");
 					
 				}
 			}
 		});
+		
 		bEnvia.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
