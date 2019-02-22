@@ -13,7 +13,7 @@ import java.awt.event.MouseEvent;
 
 public class JFInterface extends JFrame {
 	
-	Arduino conn = new Arduino();
+	Arduino conn = new Arduino(); //cria um objeto do tipo Arduino
 	private JPanel contentPane;
 	
 
