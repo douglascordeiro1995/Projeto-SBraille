@@ -1,0 +1,35 @@
+Notas importantes
+
+1º Dica
+
+Para haver a comunicação é importante de toda vez que
+adicionar um botao, ou algo na tela. Deve-se abrir o arquivo
+Arduino.java e colocar o nome desse botao lá para enviar para
+o arduino e configurar o que o determinado botão enviará para 
+o arduino em sí através do método:
+
+comunicaçãoArduino(JButton button){
+    if("Ligar".equals(button.getActionCommand())){
+        arduino.enviaDados(1); 
+        System.out.println(button.getText()); //Imprime o nome do botão pressionado
+    } 
+}
+
+NOTA: percebe-se que o método está configurado apenas para botoes necessitando
+alterações quando forem feitas outras análises.
+
+
+2º Dica
+
+O método arduino.enviaDados() foi implementado no ControlePorta.java
+ele é o responsável por caracterizar o que está sendo enviado na nossa comuni
+cação serial. Ele na v1.0 está programado para enviar apenas inteiros.
+Então se quisermos enviar um texto para o arduino ou algo do tipo, devemos
+mudar o parametro do método.
+
+3º Dica e ultima
+
+Deve-se configurar a tomada de decisoes para esses envios de dados na progra-
+mação do próprio arduino no arquivo comunicacaoArduinoJava que está em outro
+repositório meu. Se (p.e) arduino.enviaDados(2) devemos dizer ao arduino o que
+ele deve fazer se chegar o inteiro 2 na sua comunicação serial
