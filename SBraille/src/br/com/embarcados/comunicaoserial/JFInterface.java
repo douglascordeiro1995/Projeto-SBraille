@@ -5,6 +5,7 @@ package br.com.embarcados.comunicaoserial;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
@@ -14,11 +15,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
 
+
+
 public class JFInterface extends JFrame {
 	
 	Arduino conn = new Arduino(); //cria um objeto do tipo Arduino
 	private JPanel contentPane;
-	private JTextField textBox;
+	private JTextField txtBox;
 	
 
 	/**
@@ -83,12 +86,27 @@ public class JFInterface extends JFrame {
 		jBClose.setBounds(152, 199, 89, 23);
 		contentPane.add(jBClose);
 		
-		textBox = new JTextField();
-		textBox.setBounds(81, 25, 230, 20);
-		contentPane.add(textBox);
-		textBox.setColumns(10);
+		txtBox = new JTextField();
+		txtBox.setBounds(81, 25, 230, 20);
+		contentPane.add(txtBox);
+		txtBox.setColumns(10);
 		
 		JButton bEnvia = new JButton("Envia"); ///////////////////////////BOTAO ENVIA
+		bEnvia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				String letra = txtBox.getText();
+				if(letra.equals("a")) {
+					JOptionPane.showMessageDialog(null,"Texto: "+ txtBox.getText());
+					conn.comunicacaoArduino(bEnvia);
+				}
+				else {
+					JOptionPane.showMessageDialog(null,"DEU RUIM BAGARAI");
+					
+				}
+			}
+		});
 		bEnvia.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {

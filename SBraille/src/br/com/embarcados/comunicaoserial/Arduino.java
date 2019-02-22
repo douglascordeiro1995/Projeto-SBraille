@@ -1,6 +1,7 @@
 package br.com.embarcados.comunicaoserial;
 
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  * @author klauder
@@ -14,7 +15,8 @@ public class Arduino {
   public Arduino(){
       arduino = new ControlePorta("COM3",9600);//Windows - porta e taxa de transmissão
       //arduino = new ControlePorta("/dev/ttyUSB0",9600);//Linux - porta e taxa de transmissão
-  }    
+  }
+ 
  
   /**
    * Envia o comando para a porta serial
@@ -30,7 +32,7 @@ public class Arduino {
       System.out.println(button.getText());
     }
     else if("Envia".equals(button.getActionCommand())){
-        arduino.enviaDados(3);
+    //    arduino.enviaDados(txtBox.getText());
         System.out.println(button.getText());
       }
     else{
@@ -39,3 +41,5 @@ public class Arduino {
     }
   }
 }
+
+  
