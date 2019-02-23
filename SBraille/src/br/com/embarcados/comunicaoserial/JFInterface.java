@@ -23,6 +23,8 @@ import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 
 
@@ -51,6 +53,7 @@ public class JFInterface extends JFrame {
 	 * Create the frame.
 	 */
 	public JFInterface() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(JFInterface.class.getResource("/images/newLogo.png")));
 		setTitle("SBraille Vers\u00E3o 1.0");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -59,15 +62,19 @@ public class JFInterface extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenu mnArquivo = new JMenu("Arquivo");
+		mnArquivo.setIcon(new ImageIcon(JFInterface.class.getResource("/images/page.png")));
 		menuBar.add(mnArquivo);
 		
 		JMenu mnNewMenu = new JMenu("Editar");
+		mnNewMenu.setIcon(new ImageIcon(JFInterface.class.getResource("/images/page_edit.png")));
 		menuBar.add(mnNewMenu);
 		
 		JMenu mnNewMenu_1 = new JMenu("Visualizar");
+		mnNewMenu_1.setIcon(new ImageIcon(JFInterface.class.getResource("/images/eye.png")));
 		menuBar.add(mnNewMenu_1);
 		
 		JMenu mnSobre = new JMenu("Sobre");
+		mnSobre.setIcon(new ImageIcon(JFInterface.class.getResource("/images/information.png")));
 		menuBar.add(mnSobre);
 	}
 }
