@@ -20,6 +20,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
 import java.awt.Choice;
 import java.awt.BorderLayout;
+
+import javax.swing.AbstractButton;
 import javax.swing.BoxLayout;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
@@ -31,6 +33,7 @@ import javax.swing.JToggleButton;
 import javax.swing.JEditorPane;
 import java.awt.GridBagConstraints;
 import java.awt.Color;
+import javax.swing.JTextPane;
 
 
 
@@ -62,7 +65,7 @@ public class JFInterface extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(JFInterface.class.getResource("/images/newLogo.png")));
 		setTitle("SBraille Vers\u00E3o 1.0");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 480, 318);
+		setBounds(100, 100, 613, 442);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -95,13 +98,38 @@ public class JFInterface extends JFrame {
 		mnSobre.setIcon(new ImageIcon(JFInterface.class.getResource("/images/information.png")));
 		menuBar.add(mnSobre);
 		
-		JPanel panel = new JPanel();
-		getContentPane().add(panel, BorderLayout.SOUTH);
+		getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		JButton btnNewButton = new JButton("New button");
-		panel.add(btnNewButton);
+		JTextArea boxField = new JTextArea();
+		getContentPane().add(boxField, BorderLayout.CENTER);
 		
-		JEditorPane editorPane = new JEditorPane();
-		getContentPane().add(editorPane, BorderLayout.CENTER);
+		//SOUTH
+		JPanel panelSouth = new JPanel();
+		getContentPane().add(panelSouth, BorderLayout.SOUTH);
+		panelSouth.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JButton bEnvia = new JButton("Enviar");
+		bEnvia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String texto = boxField.getText();
+				if(texto.equals("a")) {           //comparo a string
+					System.out.println(alfabeto[1].getValor()); //p
+					JOptionPane.showMessageDialog(null,"Texto: "+ boxField.getText());
+					conn.comunicacaoArduino(bEnvia,alfabeto[1].getValor());
+				}
+				else {
+					JOptionPane.showMessageDialog(null,"NAO PEGOU");
+					
+				}
+			}
+		});
+		panelSouth.add(bEnvia);
+		
+		//
+		
+		
+		
+		JMenuBar menuBar_1 = new JMenuBar();
+		getContentPane().add(menuBar_1, BorderLayout.NORTH);
 	}
 }
