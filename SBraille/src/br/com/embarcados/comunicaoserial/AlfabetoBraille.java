@@ -38,4 +38,18 @@ public enum AlfabetoBraille {
 	public int getValor() {
 		return valor;
 	}
+	public int converteLetra(char letra) {
+		if(letra == 'a') {
+		return A.getValor();
+		}
+		if(letra == 'b') {
+			return B.getValor();
+		}
+		if(letra == 'c') {
+			return C.getValor();
+		}
+		return 0;
+				
+	}
+	
 }

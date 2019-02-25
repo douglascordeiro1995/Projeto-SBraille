@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
+
 import javax.swing.JTextField;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -111,25 +113,31 @@ public class JFInterface extends JFrame {
 		JButton bEnvia = new JButton("Enviar");
 		bEnvia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String texto = boxField.getText();
+				String texto = boxField.getText(); //armazena todo o conteudo da boxField na variável chamada texto
+				char[] letras = null;
+				letras = boxField.getText().toCharArray(); //pego o texto da minha boxField e separo todo em um Array de char
+				
 				if(texto.equals("a")) {           //comparo a string
 					System.out.println(alfabeto[1].getValor()); //p
-					JOptionPane.showMessageDialog(null,"Texto: "+ boxField.getText());
-					conn.comunicacaoArduino(bEnvia,alfabeto[1].getValor());
+					JOptionPane.showMessageDialog(null,"Texto: "+ texto);
+					conn.comunicacaoArduino(bEnvia,alfabeto[1].getValor()); 
+					
 				}
 				else {
-					JOptionPane.showMessageDialog(null,"NAO PEGOU");
+					//String[] textoSeparado = boxField.getText().split(" "); 
+					//System.out.println(textoSeparado[1]);                     textoSeparado armazena o texto separado  por espaços
+					//System.out.println(textoSeparado.length);
+					//System.out.println(Arrays.toString(textoSeparado));
 					
+					System.out.println("quantidade de letras: " + letras.length);
+					JOptionPane.showMessageDialog(null,"Texto: "+ texto);
 				}
 			}
 		});
 		panelSouth.add(bEnvia);
 		
-		//
-		
-		
-		
 		JMenuBar menuBar_1 = new JMenuBar();
-		getContentPane().add(menuBar_1, BorderLayout.NORTH);
+		getContentPane().add(menuBar_1, BorderLayout.NORTH); 
 	}
+		
 }

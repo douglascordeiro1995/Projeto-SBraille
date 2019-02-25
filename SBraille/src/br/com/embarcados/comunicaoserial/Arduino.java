@@ -8,6 +8,8 @@ import javax.swing.JTextField;
  */
 public class Arduino {
 	private ControlePorta arduino;
+	
+	
 
 	/**
 	 * Construtor da classe Arduino
@@ -48,4 +50,5 @@ public class Arduino {
 		}
 
 	}
+	
 }
