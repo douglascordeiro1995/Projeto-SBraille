@@ -104,17 +104,22 @@ public enum AlfabetoBraille {
         return "ERRO";
     }
 	
-	public char montaVLetras(char[] letra) {
+	public ArrayList<Character> montaVLetras(char[] letra) {
+		ArrayList<Character> vetorChar = new ArrayList<Character>();
+		char[] aux; //vetor auxiliar que guarda os caracteres dos numeros
 		int tam = letra.length;
-		char[] aux;
-		for(char e: letra) {
-			System.out.println(e); //debugg
-			//aux = e.toCharArray();
-			//e.charToEnumValue()
-			
-		//	aux = xt().toCharArray();
+		int indice = 0;
+		int tamAux = 0;
+		for(int i=0;i<tam;i++) {
+			System.out.println(letra[indice]); //mostra o caractere que chegou
+			aux = charToEnumValue(letra[indice]).toCharArray(); //transformei a letra em um vetor dos numeros discriminados em char
+			System.out.println(aux.toString()); //mostra a string dos numeros
+			tamAux = aux.length;
+			for(int j=0;j<tamAux;j++){
+				vetorChar.add(aux[j]); // pega a letra do indice e transforma em um Array de char
+			}
 		}
-		return 'c';
+		return vetorChar;
 	}
 	
 	

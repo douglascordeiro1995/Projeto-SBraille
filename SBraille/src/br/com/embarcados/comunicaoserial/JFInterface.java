@@ -116,6 +116,7 @@ public class JFInterface extends JFrame {
 			//	String texto = boxField.getText(); //armazena todo o conteudo da boxField na variável chamada texto
 				char[] letras = boxField.getText().toCharArray(); //pego o texto da minha boxField e separo todo em um Array de char
 				
+				//System.out.println(montaVLetras(alfabeto));
 				JOptionPane.showMessageDialog(null,"Texto: "+ letras[0]);
 				
 				
