@@ -1,6 +1,7 @@
 package br.com.embarcados.comunicaoserial;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public enum AlfabetoBraille {
 	
@@ -46,7 +47,7 @@ public enum AlfabetoBraille {
 	 * 
 	 * @param letra - letra a ser convertida
 	 */
-	public String charToEnumValue(char letra){
+	public static String charToEnumValue(char letra){
         switch(letra){
         case 'a':
             return A.getValor();
@@ -101,22 +102,30 @@ public enum AlfabetoBraille {
         case 'z' :
             return Z.getValor();
         }
-        return "ERRO";
+        return "X";
     }
 	
-	public ArrayList<Character> montaVLetras(char[] letra) {
+	/**
+	 * Recebe um vetor de caracteres e retorna um Array de caracteres numéricos associados as letras
+	 * 
+	 * @param letra - vetor de letras passado por referência
+	 */
+	
+	public static ArrayList<Character> montaVLetras(char[] letra) {
 		ArrayList<Character> vetorChar = new ArrayList<Character>();
 		char[] aux; //vetor auxiliar que guarda os caracteres dos numeros
 		int tam = letra.length;
-		int indice = 0;
+		int indice;
 		int tamAux = 0;
-		for(int i=0;i<tam;i++) {
+		
+		for(indice = 0;indice<tam;indice++) {
 			System.out.println(letra[indice]); //mostra o caractere que chegou
 			aux = charToEnumValue(letra[indice]).toCharArray(); //transformei a letra em um vetor dos numeros discriminados em char
 			System.out.println(aux.toString()); //mostra a string dos numeros
 			tamAux = aux.length;
 			for(int j=0;j<tamAux;j++){
 				vetorChar.add(aux[j]); // pega a letra do indice e transforma em um Array de char
+				//System.out.println(vetorChar[j]);
 			}
 		}
 		return vetorChar;
@@ -124,7 +133,7 @@ public enum AlfabetoBraille {
 	
 	
 	/**
-	 * Envia o comando para a porta serial
+	 * Monta os vetores de operação 1 2 e 3
 	 * 
 	 * @param button - Botão que é clicado na interface Java
 	 */
@@ -135,10 +144,10 @@ public enum AlfabetoBraille {
 		ArrayList<Integer> vOP3 = new ArrayList<Integer>();
 		int tam = letra.length;
 		int indice = 0;
-		while(tam!=0) {
+	//	while(tam!=0) {
 			
 			
-		}
+		//}
 	}
 }
 	

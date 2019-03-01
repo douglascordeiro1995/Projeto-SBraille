@@ -7,12 +7,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Arrays;
 
 import javax.swing.JTextField;
@@ -40,6 +37,10 @@ import javax.swing.JTextPane;
 
 
 public class JFInterface extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Arduino conn = new Arduino(); //cria um objeto do tipo Arduino
 	AlfabetoBraille[] alfabeto = AlfabetoBraille.values();
 	
@@ -113,15 +114,14 @@ public class JFInterface extends JFrame {
 		JButton bEnvia = new JButton("Enviar");
 		bEnvia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			//	String texto = boxField.getText(); //armazena todo o conteudo da boxField na variável chamada texto
+				String texto = boxField.getText(); //armazena todo o conteudo da boxField na variável chamada texto
 				char[] letras = boxField.getText().toCharArray(); //pego o texto da minha boxField e separo todo em um Array de char
+				System.out.println(AlfabetoBraille.montaVLetras(letras));
 				
-				//System.out.println(montaVLetras(alfabeto));
-				JOptionPane.showMessageDialog(null,"Texto: "+ letras[0]);
-				
-				
+				JOptionPane.showMessageDialog(null,"Texto: "+ texto);
 				
 				
+
 				//conn.comunicacaoArduino(bEnvia,alfabeto[1].getValor()); 
 			}
 		});
