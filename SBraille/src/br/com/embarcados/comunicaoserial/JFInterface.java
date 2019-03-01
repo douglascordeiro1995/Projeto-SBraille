@@ -113,25 +113,15 @@ public class JFInterface extends JFrame {
 		JButton bEnvia = new JButton("Enviar");
 		bEnvia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String texto = boxField.getText(); //armazena todo o conteudo da boxField na variável chamada texto
-				char[] letras = null;
-				letras = boxField.getText().toCharArray(); //pego o texto da minha boxField e separo todo em um Array de char
+			//	String texto = boxField.getText(); //armazena todo o conteudo da boxField na variável chamada texto
+				char[] letras = boxField.getText().toCharArray(); //pego o texto da minha boxField e separo todo em um Array de char
 				
-				if(texto.equals("a")) {           //comparo a string
-					System.out.println(alfabeto[1].getValor()); //p
-					JOptionPane.showMessageDialog(null,"Texto: "+ texto);
-					conn.comunicacaoArduino(bEnvia,alfabeto[1].getValor()); 
-					
-				}
-				else {
-					//String[] textoSeparado = boxField.getText().split(" "); 
-					//System.out.println(textoSeparado[1]);                     textoSeparado armazena o texto separado  por espaços
-					//System.out.println(textoSeparado.length);
-					//System.out.println(Arrays.toString(textoSeparado));
-					
-					System.out.println("quantidade de letras: " + letras.length);
-					JOptionPane.showMessageDialog(null,"Texto: "+ texto);
-				}
+				JOptionPane.showMessageDialog(null,"Texto: "+ letras[0]);
+				
+				
+				
+				
+				//conn.comunicacaoArduino(bEnvia,alfabeto[1].getValor()); 
 			}
 		});
 		panelSouth.add(bEnvia);
