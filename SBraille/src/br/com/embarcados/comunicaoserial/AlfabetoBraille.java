@@ -1,7 +1,7 @@
 package br.com.embarcados.comunicaoserial;
 
 public enum AlfabetoBraille {
-	
+	//sad
 	A(4),     //0
 	B(12),    //1
 	C(14),    //2
