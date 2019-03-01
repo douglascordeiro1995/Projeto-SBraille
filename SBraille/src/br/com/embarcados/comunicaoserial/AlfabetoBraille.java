@@ -138,18 +138,40 @@ public enum AlfabetoBraille {
 	 * @param button - Botão que é clicado na interface Java
 	 */
 	
-	public void montaVetorOP(char[] letra) { //recebo um vetor de char discriminado ja
-		ArrayList<Integer> vOP1 = new ArrayList<Integer>();
-		ArrayList<Integer> vOP2 = new ArrayList<Integer>();
-		ArrayList<Integer> vOP3 = new ArrayList<Integer>();
-		int tam = letra.length;
-		int indice = 0;
-	//	while(tam!=0) {
-			
-			
-		//}
+	public static void montaVetorOP(ArrayList <Character> vetorLetras) { //recebo um vetor de char discriminado ja
+		ArrayList<Character> vOP1 = new ArrayList<Character>();
+		ArrayList<Character> vOP2 = new ArrayList<Character>();
+		ArrayList<Character> vOP3 = new ArrayList<Character>();
+		
+		for(char e: vetorLetras) {
+			if(e == '1' || e == '4') {
+				vOP1.add(e);
+			}
+			else if(e == '2' || e == '5') {
+				vOP2.add(e);
+			}
+			else if(e == '3' || e == '6'){
+				vOP3.add(e);
+			}
+			else {
+				System.out.println("NAO ROLOU");
+			}
+		}
+		
+		imprimeVetor(vOP1);
+		imprimeVetor(vOP2);
+		imprimeVetor(vOP3);
+	}
+
+
+	private static void imprimeVetor(ArrayList<Character>v) {
+		for(char e: v) {
+			System.out.print(e + " ");
+		}
+		System.out.println();
 	}
 }
+
 	
 	
 	
